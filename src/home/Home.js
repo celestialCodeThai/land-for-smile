@@ -1,9 +1,12 @@
 import React from "react";
+import Header from "./Header";
+import Content from "./Content";
 
 const Home = () => {
   return (
     <div className="home-container">
-      <h1>Home</h1>
+      <Header />
+      <Content />
     </div>
   );
 };
