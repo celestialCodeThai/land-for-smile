@@ -17,16 +17,15 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-
-    marginTop: theme.spacing(8),
+    justifyContent: "center",
+    marginTop: theme.spacing(9),
   },
   title: {
-    marginTop: theme.spacing(5),
     color: "white",
     fontSize: ({ md, sm }) => (md ? "4rem" : sm ? "2rem" : "1.5rem"),
   },
   buttonGroup: {
-    marginTop: theme.spacing(20),
+    marginTop: theme.spacing(2),
     width: ({ md, sm }) => (md ? "50%" : sm ? "70%" : "90%"),
   },
   button: {
@@ -39,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
   boxTextField: {
     backgroundColor: "white",
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(3),
     display: "flex",
     alignItems: "center",
     width: ({ md, sm }) => (md ? "50%" : sm ? "70%" : "90%"),

@@ -23,22 +23,19 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
   },
   media: {
-    height: ({ sm }) => (sm ? 220 : 180),
+    height: 220,
   },
 }));
 
-const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-const Content = () => {
-  const sm = useMediaQuery("(min-width:480px)");
-  const classes = useStyles({ sm });
+const items = [1, 2, 3];
+
+const NearbyPlaces = () => {
+  const classes = useStyles();
   return (
-    <Container className={classes.gridContainer} maxWidth="lg">
-      <Typography variant="h4" className={classes.gridTitle}>
-        รายการอสังหาฯ
-      </Typography>
+    <div>
       <Grid container spacing={3}>
         {items.map((item, index) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+          <Grid item lg={4} key={index}>
             <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
@@ -63,8 +60,8 @@ const Content = () => {
           </Grid>
         ))}
       </Grid>
-    </Container>
+    </div>
   );
 };
 
-export default Content;
+export default NearbyPlaces;

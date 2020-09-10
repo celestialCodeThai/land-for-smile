@@ -10,6 +10,8 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Slide from "@material-ui/core/Slide";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
 
 const HideOnScroll = (props) => {
   const { children, window } = props;
@@ -47,12 +49,16 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
     marginRight: theme.spacing(5),
     fontSize: "16px",
+    display: ({ sm }) => (sm ? "block" : "none"),
+  },
+  icon: {
+    display: ({ sm }) => (sm ? "none" : "block"),
   },
 }));
 
 const Header = (props) => {
-  const classes = useStyles();
   const sm = useMediaQuery("(min-width:480px)");
+  const classes = useStyles({ sm });
   return (
     <div className="header-container">
       <CssBaseline />
@@ -74,6 +80,9 @@ const Header = (props) => {
             >
               About Us
             </Button>
+            <IconButton className={classes.icon}>
+              <MenuIcon color="primary" fontSize="large" />
+            </IconButton>
           </Toolbar>
         </AppBar>
       </HideOnScroll>
