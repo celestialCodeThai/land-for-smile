@@ -1,11 +1,16 @@
 import React from "react";
-import Home from "./home/Home";
+import Home from "./home";
+import Product from "./product";
 import "./stylesheets/main.scss";
+import { Router } from "@reach/router";
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <Router>
+        <Home path="/" />
+        <Product path="/product/:productId" />
+      </Router>
     </div>
   );
 }

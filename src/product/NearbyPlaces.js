@@ -9,6 +9,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { navigate } from "@reach/router";
 
 const useStyles = makeStyles((theme) => ({
   gridContainer: {
@@ -31,12 +32,17 @@ const items = [1, 2, 3];
 
 const NearbyPlaces = () => {
   const classes = useStyles();
+
+  const productClick = (productId) => {
+    navigate(`/product/${productId}`);
+  };
+
   return (
     <div>
       <Grid container spacing={3}>
         {items.map((item, index) => (
           <Grid item lg={4} key={index}>
-            <Card className={classes.card}>
+            <Card className={classes.card} onClick={() => productClick(index)}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}

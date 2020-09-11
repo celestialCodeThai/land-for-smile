@@ -12,6 +12,7 @@ import Slide from "@material-ui/core/Slide";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import { navigate } from "@reach/router";
 
 const HideOnScroll = (props) => {
   const { children, window } = props;
@@ -32,13 +33,11 @@ HideOnScroll.propTypes = {
 const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: teal[50],
-    height: 80,
     display: "flex",
-    justifyContent: "center",
   },
   toolBar: {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
   },
   logo: {
     fontWeight: 800,
@@ -46,9 +45,6 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     border: "none",
-    fontWeight: 500,
-    marginRight: theme.spacing(5),
-    fontSize: "16px",
     display: ({ sm }) => (sm ? "block" : "none"),
   },
   icon: {
@@ -59,17 +55,26 @@ const useStyles = makeStyles((theme) => ({
 const Header = (props) => {
   const sm = useMediaQuery("(min-width:480px)");
   const classes = useStyles({ sm });
+
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const backToHome = () => {
+    scrollTop();
+    navigate("/");
+  };
   return (
     <div className="header-container">
       <CssBaseline />
       <HideOnScroll {...props}>
-        <AppBar className={classes.appBar} position="fixed">
+        <AppBar className={classes.appBar}>
           <Toolbar className={classes.toolBar}>
             <Typography
-              variant="h6"
+              variant="h5"
               color="primary"
               className={classes.logo}
-              onClick={() => console.log(`Back to Home`)}
+              onClick={() => backToHome()}
             >
               landforsmile
             </Typography>
