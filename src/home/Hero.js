@@ -60,6 +60,14 @@ const Hero = () => {
     setProductTag(buttonType);
   };
 
+  const options = products.map((option) => {
+    const isLocation = true;
+    return {
+      groupLabel: "พื้นที่",
+      ...option,
+    };
+  });
+
   return (
     <Box className={classes.hero}>
       <Box className={classes.title}>Thailand's Real Estate</Box>
@@ -85,11 +93,13 @@ const Hero = () => {
           freeSolo
           id="free-solo-2-demo"
           disableClearable
-          options={products.map((option) => option.id)}
+          options={options.filter((product) => product.tag === productTag)}
+          groupBy={(option) => option.groupLabel}
+          getOptionLabel={(product) => product.district + ", " + product.city}
           renderInput={(params) => (
             <TextField
               {...params}
-              placeholder="ค้นหาจากชื่อโครงการ"
+              placeholder="ค้นหาจากชื่อโครงการ ทำเล"
               className={classes.textField}
               variant="outlined"
               InputProps={{
