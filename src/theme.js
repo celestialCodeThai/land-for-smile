@@ -4,10 +4,10 @@ import teal from "@material-ui/core/colors/teal";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: teal[500],
+      main: "#001E4E",
     },
     secondary: {
-      main: teal[50],
+      main: "#ffffff",
     },
   },
 });
