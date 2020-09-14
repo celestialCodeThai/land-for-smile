@@ -12,7 +12,6 @@ import Slide from "@material-ui/core/Slide";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import { navigate } from "@reach/router";
 
 const HideOnScroll = (props) => {
   const { children, window } = props;
@@ -55,42 +54,27 @@ const useStyles = makeStyles((theme) => ({
 const Header = (props) => {
   const sm = useMediaQuery("(min-width:480px)");
   const classes = useStyles({ sm });
-
-  const scrollTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const backToHome = () => {
-    scrollTop();
-    navigate("/");
-  };
   return (
     <div className="header-container">
       <CssBaseline />
-      <HideOnScroll {...props}>
-        <AppBar className={classes.appBar}>
-          <Toolbar className={classes.toolBar}>
-            <Typography
-              variant="h5"
-              color="primary"
-              className={classes.logo}
-              onClick={() => backToHome()}
-            >
+      {/* <HideOnScroll {...props}> */}
+      <AppBar className={classes.appBar}>
+        <Toolbar className={classes.toolBar}>
+          <a href="http://localhost:3000/" className="link-action">
+            <Typography variant="h5" color="primary" className={classes.logo}>
               landforsmile
             </Typography>
-            <Button
-              className={classes.button}
-              color="primary"
-              variant="outlined"
-            >
-              About Us
-            </Button>
-            <IconButton className={classes.icon}>
-              <MenuIcon color="primary" fontSize="large" />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-      </HideOnScroll>
+          </a>
+
+          <Button className={classes.button} color="primary" variant="outlined">
+            About Us
+          </Button>
+          <IconButton className={classes.icon}>
+            <MenuIcon color="primary" fontSize="large" />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+      {/* </HideOnScroll> */}
     </div>
   );
 };

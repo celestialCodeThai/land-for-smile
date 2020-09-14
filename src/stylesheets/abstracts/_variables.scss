@@ -1,0 +1,40 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+/// Colors
+
+$colors: (
+  black: #0f1131,
+  white: #ffffff,
+  border: #ecebeb,
+);
+
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+/// Breakpoints map
+
+$giant: 1440px;
+$large: 1024px;
+$medium: 768px;
+$small: 320px;
+
+@mixin medium {
+  @media (min-width: #{$medium}) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (min-width: #{$large}) {
+    @content;
+  }
+}
+
+@mixin giant {
+  @media (min-width: #{$giant}) {
+    @content;
+  }
+}

@@ -15,7 +15,7 @@ import Button from "@material-ui/core/Button";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { navigate } from "@reach/router";
-import GalleryLightbox from "../gallery";
+import GalleryLightbox from "../lightbox";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -34,8 +34,8 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    position: "sticky",
-    top: "10rem",
+    // position: "sticky",
+    // top: "10rem",
   },
   lineButton: {
     marginTop: theme.spacing(1),
@@ -46,8 +46,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
-
 const scrollTop = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
@@ -57,19 +55,15 @@ const Product = (props) => {
   const { productId } = props;
   const [products, setProducts] = useState(999);
 
-  const center = {
-    lat: 13.85,
-    lng: 100.64,
-  };
-
-  const zoom = 11;
-
   useEffect(() => {
     setProducts(productId);
     scrollTop();
   }, [productId]);
 
   const phoneNumber = "tel:0910036300";
+
+  const getMapsUrl = `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d407.17042327528327!2d100.64279456589593!3d13.85825414402981!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe46bdfc4cd72578e!2z4Lia4Lij4Li04Lip4Lix4LiXIOC4muC4tOC4quC5geC4oeC4mSDguK3guLTguJnguYDguJXguK3guKPguYzguYDguJnguIrguLHguYjguJnguYHguJnguKUg4LiI4Liz4LiB4Lix4LiU!5e0!3m2!1sth!2sth!4v1600055043841!5m2!1sth!2sth" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>`;
+  const mapsUrl = getMapsUrl.split('"')[1];
 
   return (
     <div>
@@ -242,17 +236,14 @@ const Product = (props) => {
         <div className="google-maps">
           <div className="title">ตำแหน่งที่ตั้ง</div>
           <div className="map">
-            <GoogleMapReact
-              //bootstrapURLKeys={{ key: "YOUR KEY HERE" }}
-              defaultCenter={center}
-              defaultZoom={zoom}
-            >
-              <AnyReactComponent
-                lat={13.858264}
-                lng={100.642936}
-                text="My Marker"
-              />
-            </GoogleMapReact>
+            <iframe
+              src={mapsUrl}
+              width="100%"
+              height="100%"
+              frameBorder="0"
+              style={{ border: 0 }}
+              allowFullScreen=""
+            ></iframe>
           </div>
         </div>
         <div className="nearby-places">

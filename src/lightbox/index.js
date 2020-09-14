@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from "react";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
-// import { photos } from "./photos";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -14,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 const photos = [];
 for (let index = 0; index < 20; index++) {
   photos.push({
-    src: "https://picsum.photos/800/450",
+    src: "https://picsum.photos/1280/720",
   });
 }
 

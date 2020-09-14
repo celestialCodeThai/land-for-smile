@@ -10,15 +10,22 @@ body {
 .image-slide {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 15px;
   border-radius: 8px;
+
+  @include medium {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .image-item {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 15px;
+  display: none;
+  @include medium {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+  }
 }
 
 .product-text {
@@ -29,7 +36,6 @@ body {
 }
 
 .product-detail {
-  max-width: 60%;
   > .title {
     font-size: 1.5rem;
     font-weight: 600;
@@ -55,6 +61,10 @@ body {
       padding-bottom: 1rem;
       border-bottom: 1px solid gainsboro;
     }
+  }
+
+  @include medium {
+    max-width: 60%;
   }
 }
 
@@ -110,6 +120,13 @@ body {
   padding: 10px;
 }
 
+.contact {
+  display: none;
+  @include medium {
+    display: block;
+  }
+}
+
 .link-action {
   // display: flex;
   // align-items: center;
@@ -122,4 +139,9 @@ body {
   position: absolute;
   right: 20px;
   bottom: 30px;
+}
+
+.footer-container {
+  background-color: #80cbc4;
+  min-height: 300px;
 }
