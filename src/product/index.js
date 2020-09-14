@@ -16,6 +16,8 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { navigate } from "@reach/router";
 import GalleryLightbox from "../lightbox";
+import Skeleton from '@material-ui/lab/Skeleton';
+
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -54,6 +56,11 @@ const Product = (props) => {
   const classes = useStyles();
   const { productId } = props;
   const [products, setProducts] = useState(999);
+  const [loadedMain, setLoadedMain] = useState(false);
+  const [loadedImg1, setLoadedloadedImg1] = useState(false);
+  const [loadedImg2, setLoadedloadedImg2] = useState(false);
+  const [loadedImg3, setLoadedloadedImg3] = useState(false);
+  const [loadedImg4, setLoadedloadedImg4] = useState(false);
 
   useEffect(() => {
     setProducts(productId);
@@ -62,7 +69,7 @@ const Product = (props) => {
 
   const phoneNumber = "tel:0910036300";
 
-  const getMapsUrl = `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d407.17042327528327!2d100.64279456589593!3d13.85825414402981!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe46bdfc4cd72578e!2z4Lia4Lij4Li04Lip4Lix4LiXIOC4muC4tOC4quC5geC4oeC4mSDguK3guLTguJnguYDguJXguK3guKPguYzguYDguJnguIrguLHguYjguJnguYHguJnguKUg4LiI4Liz4LiB4Lix4LiU!5e0!3m2!1sth!2sth!4v1600055043841!5m2!1sth!2sth" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>`;
+  const getMapsUrl = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3873.678906978113!2d100.64069031496125!3d13.858302590278551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311d639376e9c553%3A0x7f5cc1c8480e0590!2sCelestialcode%20Co.%2CLTD!5e0!3m2!1sth!2sth!4v1600076932536!5m2!1sth!2sth" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>';
   const mapsUrl = getMapsUrl.split('"')[1];
 
   return (
@@ -70,86 +77,75 @@ const Product = (props) => {
       <Header />
       <Container className={classes.container} maxWidth="lg">
         <div className="image-slide">
-          <Card
-            className={classes.card}
-            style={{
-              borderTopLeftRadius: 8,
-              borderBottomLeftRadius: 8,
-              borderTopRightRadius: 0,
-              borderBottomRightRadius: 0,
-            }}
-          >
-            <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image="https://picsum.photos/400/300"
-                title="Contemplative Reptile"
-              />
-            </CardActionArea>
-          </Card>
+                <img
+                  width="100%"
+                  style={loadedMain ? {} : { display: 'none' }}
+                  className={classes.media}
+                  src={"https://picsum.photos/400/300"}
+                  onLoad={()=>setLoadedMain(true)}
+                />
+              {!loadedMain &&
+                  <Skeleton animation="wave" variant="rect" width="100%" > <CardMedia
+                    className={classes.media}
+                    title="Contemplative Reptile"
+                  /></Skeleton>
+               }
           <div className="image-item">
-            <Card
-              className={classes.card}
-              style={{
-                borderRadius: 0,
-              }}
-            >
-              <CardActionArea>
-                <CardMedia
+          <img
+                  width="100%"
+                  style={loadedImg1 ? {} : { display: 'none' }}
                   className={classes.mediaItem}
-                  image="https://picsum.photos/400/300"
-                  title="Contemplative Reptile"
+                  src={"https://picsum.photos/400/500"}
+                  onLoad={()=>setLoadedloadedImg1(true)}
                 />
-              </CardActionArea>
-            </Card>
-            <Card
-              className={classes.card}
-              style={{
-                borderTopLeftRadius: 0,
-                borderBottomLeftRadius: 0,
-                borderTopRightRadius: 8,
-                borderBottomRightRadius: 0,
-              }}
-            >
-              <CardActionArea>
-                <CardMedia
+              {!loadedImg1 &&
+                  <Skeleton animation="wave" variant="rect" width="100%" > <CardMedia
+                    className={classes.mediaItem}
+                    title="Contemplative Reptile"
+                  /></Skeleton>
+               }
+
+<img
+                  width="100%"
+                  style={loadedImg2 ? {} : { display: 'none' }}
                   className={classes.mediaItem}
-                  image="https://picsum.photos/400/300"
-                  title="Contemplative Reptile"
+                  src={"https://picsum.photos/400/100"}
+                  onLoad={()=>setLoadedloadedImg2(true)}
                 />
-              </CardActionArea>
-            </Card>
-            <Card
-              className={classes.card}
-              style={{
-                borderRadius: 0,
-              }}
-            >
-              <CardActionArea>
-                <CardMedia
+              {!loadedImg2 &&
+                  <Skeleton animation="wave" variant="rect" width="100%" > <CardMedia
+                    className={classes.mediaItem}
+                    title="Contemplative Reptile"
+                  /></Skeleton>
+               }
+            <img
+                  width="100%"
+                  style={loadedImg3 ? {} : { display: 'none' }}
                   className={classes.mediaItem}
-                  image="https://picsum.photos/400/300"
-                  title="Contemplative Reptile"
+                  src={"https://picsum.photos/400/200"}
+                  onLoad={()=>setLoadedloadedImg3(true)}
                 />
-              </CardActionArea>
-            </Card>
-            <Card
-              className={classes.card}
-              style={{
-                borderTopLeftRadius: 0,
-                borderBottomLeftRadius: 0,
-                borderTopRightRadius: 0,
-                borderBottomRightRadius: 8,
-              }}
-            >
-              <CardActionArea>
-                <CardMedia
+              {!loadedImg3 &&
+                  <Skeleton animation="wave" variant="rect" width="100%" > <CardMedia
+                    className={classes.mediaItem}
+                    title="Contemplative Reptile"
+                  /></Skeleton>
+               }
+
+<img
+                  width="100%"
+                  style={loadedImg4 ? {} : { display: 'none' }}
                   className={classes.mediaItem}
-                  image="https://picsum.photos/400/300"
-                  title="Contemplative Reptile"
+                  src={"https://picsum.photos/400/400"}
+                  onLoad={()=>setLoadedloadedImg4(true)}
                 />
-              </CardActionArea>
-            </Card>
+              {!loadedImg4 &&
+                  <Skeleton animation="wave" variant="rect" width="100%" > <CardMedia
+                    className={classes.mediaItem}
+                    title="Contemplative Reptile"
+                  /></Skeleton>
+               }
+           
           </div>
           <GalleryLightbox />
         </div>
