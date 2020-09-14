@@ -5,6 +5,9 @@ import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import TextField from "@material-ui/core/TextField";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import SearchIcon from '@material-ui/icons/Search';
+import InputAdornment from '@material-ui/core/InputAdornment';
+
 
 const useStyles = makeStyles((theme) => ({
   hero: {
@@ -59,7 +62,7 @@ const Hero = () => {
 
   return (
     <Box className={classes.hero}>
-      <Box className={classes.title}>ซื้อ | เช่า ทาวน์เฮ้าส์ บ้าน คอนโด</Box>
+      <Box className={classes.title}>Thailand's Real Estate</Box>
       <ButtonGroup variant="contained" className={classes.buttonGroup}>
         <Button
           className={classes.button}
@@ -81,6 +84,14 @@ const Hero = () => {
           placeholder="ค้นหาจากชื่อโครงการ"
           className={classes.textField}
           variant="outlined"
+          type="search"
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                    <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
         />
       </Box>
     </Box>

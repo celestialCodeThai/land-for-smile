@@ -37,7 +37,7 @@ const Content = () => {
   return (
     <Container className={classes.gridContainer} maxWidth="lg">
       <Typography variant="h4" className={classes.gridTitle}>
-        รายการอสังหาฯ
+        รายการอสังหาสำหรับซื้อ
       </Typography>
       <Grid container spacing={3}>
         {products.map((product, index) => (
