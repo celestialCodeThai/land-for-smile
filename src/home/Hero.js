@@ -7,6 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import SearchIcon from "@material-ui/icons/Search";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import FilterContext from "../context/FilterContext";
 
 const useStyles = makeStyles((theme) => ({
   hero: {
