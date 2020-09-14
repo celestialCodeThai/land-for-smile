@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import TextField from "@material-ui/core/TextField";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import SearchIcon from '@material-ui/icons/Search';
-import InputAdornment from '@material-ui/core/InputAdornment';
-
+import SearchIcon from "@material-ui/icons/Search";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import FilterContext from "../context/FilterContext";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import { products } from "./testDatas";
 
 const useStyles = makeStyles((theme) => ({
   hero: {
@@ -52,12 +54,10 @@ const Hero = () => {
   const md = useMediaQuery("(min-width:950px)");
   const sm = useMediaQuery("(min-width:480px)");
   const classes = useStyles({ md, sm });
-
-  const [buttonValue, setButtonValue] = useState(true);
+  const { productTag, setProductTag } = useContext(FilterContext);
 
   const handleClickButton = (buttonType) => {
-    if (buttonType === "buy") setButtonValue(true);
-    else setButtonValue(false);
+    setProductTag(buttonType);
   };
 
   return (
@@ -66,32 +66,43 @@ const Hero = () => {
       <ButtonGroup variant="contained" className={classes.buttonGroup}>
         <Button
           className={classes.button}
-          color={buttonValue ? "primary" : "secondary"}
-          onClick={() => handleClickButton("buy")}
+          color={productTag === "sell" ? "primary" : "secondary"}
+          onClick={() => handleClickButton("sell")}
         >
           ซื้อ
         </Button>
         <Button
           className={classes.button}
-          color={!buttonValue ? "primary" : "secondary"}
+          color={productTag === "rent" ? "primary" : "secondary"}
           onClick={() => handleClickButton("rent")}
         >
           เช่า
         </Button>
       </ButtonGroup>
       <Box className={classes.boxTextField} borderRadius={4}>
-        <TextField
-          placeholder="ค้นหาจากชื่อโครงการ"
-          className={classes.textField}
-          variant="outlined"
-          type="search"
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
+        <Autocomplete
+          fullWidth
+          freeSolo
+          id="free-solo-2-demo"
+          disableClearable
+          options={products.map((option) => option.id)}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              placeholder="ค้นหาจากชื่อโครงการ"
+              className={classes.textField}
+              variant="outlined"
+              InputProps={{
+                ...params.InputProps,
+                type: "search",
+                endAdornment: (
+                  <InputAdornment position="end">
                     <SearchIcon />
-              </InputAdornment>
-            ),
-          }}
+                  </InputAdornment>
+                ),
+              }}
+            />
+          )}
         />
       </Box>
     </Box>
