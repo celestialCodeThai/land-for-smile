@@ -8,6 +8,8 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import SearchIcon from "@material-ui/icons/Search";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import FilterContext from "../context/FilterContext";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import { products } from "./testDatas";
 
 const useStyles = makeStyles((theme) => ({
   hero: {
@@ -78,18 +80,29 @@ const Hero = () => {
         </Button>
       </ButtonGroup>
       <Box className={classes.boxTextField} borderRadius={4}>
-        <TextField
-          placeholder="ค้นหาจากชื่อโครงการ"
-          className={classes.textField}
-          variant="outlined"
-          type="search"
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-          }}
+        <Autocomplete
+          fullWidth
+          freeSolo
+          id="free-solo-2-demo"
+          disableClearable
+          options={products.map((option) => option.id)}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              placeholder="ค้นหาจากชื่อโครงการ"
+              className={classes.textField}
+              variant="outlined"
+              InputProps={{
+                ...params.InputProps,
+                type: "search",
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }}
+            />
+          )}
         />
       </Box>
     </Box>

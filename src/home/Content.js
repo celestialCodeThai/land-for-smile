@@ -36,16 +36,16 @@ const Content = () => {
   const classes = useStyles({ sm });
 
   const { productTag, setProductTag } = useContext(FilterContext);
+  const tag = productTag === "sell" ? "ซื้อ" : "เช่า";
   return (
     <Container className={classes.gridContainer} maxWidth="lg">
       <Typography variant="h4" className={classes.gridTitle}>
-        รายการอสังหาสำหรับซื้อ
+        {`รายการอสังหาสำหรับ${tag}`}
       </Typography>
       <Grid container spacing={3}>
         {products
           .filter((product) => product.tag === productTag)
           .map((product, index) => {
-            const tag = productTag === "sell" ? "ขาย" : "เช่า";
             return (
               <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
                 <a
@@ -60,7 +60,7 @@ const Content = () => {
                       />
                       <CardContent>
                         <Typography gutterBottom variant="h6">
-                          {`฿${product.price} - (${tag})`}
+                          {`฿${product.price}`}
                         </Typography>
                         <Typography
                           gutterBottom
