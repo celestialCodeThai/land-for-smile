@@ -69,7 +69,7 @@ const Product = (props) => {
 
   const phoneNumber = "tel:0910036300";
 
-  const getMapsUrl = `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d407.17042327528327!2d100.64279456589593!3d13.85825414402981!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe46bdfc4cd72578e!2z4Lia4Lij4Li04Lip4Lix4LiXIOC4muC4tOC4quC5geC4oeC4mSDguK3guLTguJnguYDguJXguK3guKPguYzguYDguJnguIrguLHguYjguJnguYHguJnguKUg4LiI4Liz4LiB4Lix4LiU!5e0!3m2!1sth!2sth!4v1600055043841!5m2!1sth!2sth" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>`;
+  const getMapsUrl = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3873.678906978113!2d100.64069031496125!3d13.858302590278551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311d639376e9c553%3A0x7f5cc1c8480e0590!2sCelestialcode%20Co.%2CLTD!5e0!3m2!1sth!2sth!4v1600076932536!5m2!1sth!2sth" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>';
   const mapsUrl = getMapsUrl.split('"')[1];
 
   return (
