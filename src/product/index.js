@@ -16,6 +16,8 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { navigate } from "@reach/router";
 import GalleryLightbox from "../lightbox";
+import Skeleton from '@material-ui/lab/Skeleton';
+
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -54,6 +56,11 @@ const Product = (props) => {
   const classes = useStyles();
   const { productId } = props;
   const [products, setProducts] = useState(999);
+  const [loadedMain, setLoadedMain] = useState(false);
+  const [loadedImg1, setLoadedloadedImg1] = useState(false);
+  const [loadedImg2, setLoadedloadedImg2] = useState(false);
+  const [loadedImg3, setLoadedloadedImg3] = useState(false);
+  const [loadedImg4, setLoadedloadedImg4] = useState(false);
 
   useEffect(() => {
     setProducts(productId);
@@ -70,86 +77,75 @@ const Product = (props) => {
       <Header />
       <Container className={classes.container} maxWidth="lg">
         <div className="image-slide">
-          <Card
-            className={classes.card}
-            style={{
-              borderTopLeftRadius: 8,
-              borderBottomLeftRadius: 8,
-              borderTopRightRadius: 0,
-              borderBottomRightRadius: 0,
-            }}
-          >
-            <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image="https://picsum.photos/400/300"
-                title="Contemplative Reptile"
-              />
-            </CardActionArea>
-          </Card>
+                <img
+                  width="100%"
+                  style={loadedMain ? {} : { display: 'none' }}
+                  className={classes.media}
+                  src={"https://picsum.photos/400/300"}
+                  onLoad={()=>setLoadedMain(true)}
+                />
+              {!loadedMain &&
+                  <Skeleton animation="wave" variant="rect" width="100%" > <CardMedia
+                    className={classes.media}
+                    title="Contemplative Reptile"
+                  /></Skeleton>
+               }
           <div className="image-item">
-            <Card
-              className={classes.card}
-              style={{
-                borderRadius: 0,
-              }}
-            >
-              <CardActionArea>
-                <CardMedia
+          <img
+                  width="100%"
+                  style={loadedImg1 ? {} : { display: 'none' }}
                   className={classes.mediaItem}
-                  image="https://picsum.photos/400/300"
-                  title="Contemplative Reptile"
+                  src={"https://picsum.photos/400/500"}
+                  onLoad={()=>setLoadedloadedImg1(true)}
                 />
-              </CardActionArea>
-            </Card>
-            <Card
-              className={classes.card}
-              style={{
-                borderTopLeftRadius: 0,
-                borderBottomLeftRadius: 0,
-                borderTopRightRadius: 8,
-                borderBottomRightRadius: 0,
-              }}
-            >
-              <CardActionArea>
-                <CardMedia
+              {!loadedImg1 &&
+                  <Skeleton animation="wave" variant="rect" width="100%" > <CardMedia
+                    className={classes.mediaItem}
+                    title="Contemplative Reptile"
+                  /></Skeleton>
+               }
+
+<img
+                  width="100%"
+                  style={loadedImg2 ? {} : { display: 'none' }}
                   className={classes.mediaItem}
-                  image="https://picsum.photos/400/300"
-                  title="Contemplative Reptile"
+                  src={"https://picsum.photos/400/100"}
+                  onLoad={()=>setLoadedloadedImg2(true)}
                 />
-              </CardActionArea>
-            </Card>
-            <Card
-              className={classes.card}
-              style={{
-                borderRadius: 0,
-              }}
-            >
-              <CardActionArea>
-                <CardMedia
+              {!loadedImg2 &&
+                  <Skeleton animation="wave" variant="rect" width="100%" > <CardMedia
+                    className={classes.mediaItem}
+                    title="Contemplative Reptile"
+                  /></Skeleton>
+               }
+            <img
+                  width="100%"
+                  style={loadedImg3 ? {} : { display: 'none' }}
                   className={classes.mediaItem}
-                  image="https://picsum.photos/400/300"
-                  title="Contemplative Reptile"
+                  src={"https://picsum.photos/400/200"}
+                  onLoad={()=>setLoadedloadedImg3(true)}
                 />
-              </CardActionArea>
-            </Card>
-            <Card
-              className={classes.card}
-              style={{
-                borderTopLeftRadius: 0,
-                borderBottomLeftRadius: 0,
-                borderTopRightRadius: 0,
-                borderBottomRightRadius: 8,
-              }}
-            >
-              <CardActionArea>
-                <CardMedia
+              {!loadedImg3 &&
+                  <Skeleton animation="wave" variant="rect" width="100%" > <CardMedia
+                    className={classes.mediaItem}
+                    title="Contemplative Reptile"
+                  /></Skeleton>
+               }
+
+<img
+                  width="100%"
+                  style={loadedImg4 ? {} : { display: 'none' }}
                   className={classes.mediaItem}
-                  image="https://picsum.photos/400/300"
-                  title="Contemplative Reptile"
+                  src={"https://picsum.photos/400/400"}
+                  onLoad={()=>setLoadedloadedImg4(true)}
                 />
-              </CardActionArea>
-            </Card>
+              {!loadedImg4 &&
+                  <Skeleton animation="wave" variant="rect" width="100%" > <CardMedia
+                    className={classes.mediaItem}
+                    title="Contemplative Reptile"
+                  /></Skeleton>
+               }
+           
           </div>
           <GalleryLightbox />
         </div>
